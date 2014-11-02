@@ -1,0 +1,3 @@
+<strong><%= current_user.name %></strong>
+<span><%= link_to "view my profile", current_user %></span>
+<span><%= pluralize(current_user.docs.count, "doc") %></span>

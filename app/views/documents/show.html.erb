@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @document.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= simple_format(@document.content) %>
+</p>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>
+
+<h3>Save this document</h3>
+
+
+<%= form_for(@doc) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+ 
+    <%= f.hidden_field :title, :value => @document.title %>
+
+
+    <%= f.hidden_field :content,  :cols => "30", :rows => "10", :value => @document.content %>
+
+
+
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>
+
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="section_form">
+        <%= render 'shared/section_form' %>
+      </section>
+    </aside>
+  </div>
+
+<div class="col-md-8">
+    <% if @document.sections.any? %>
+      <h3>Sections (<%= @document.sections.count %>)</h3>
+      <ol class="sections">
+        <%= render @document.sections %>
+      </ol>
+    <% end %>
+</div>
+

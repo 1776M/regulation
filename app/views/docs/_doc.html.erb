@@ -1,0 +1,9 @@
+<li id="doc-<%= doc.id %>">
+  <span class="user">
+    <%= link_to doc.title, doc_path(doc.id) %>
+  </span>
+
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(doc.created_at) %> ago.
+  </span>
+</li>
